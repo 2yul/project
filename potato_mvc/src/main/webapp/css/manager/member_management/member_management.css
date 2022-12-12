@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+/* 컨테이너 */
+.main {
+    display: block;
+    width: 1300px;
+    margin: 0 0 50px 330px;
+} 
+
+.text {
+    margin: 15px;
+    color: #5C3300;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* 본문 */
+.member_management {
+	display: flex;
+	margin-top: 25px;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.mm_top {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 25px;
+}
+
+/* 카테고리 선택 */
+.select_category {
+  width: 160px;
+  height: 45px;
+  appearance: none;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: solid 1px #e9ecef;
+  box-sizing: border-box;
+  font-size: 17px;
+  letter-spacing: -0.6px;
+  text-align: left;
+  background: #fff url(https://d1unjqcospf8gs.cloudfront.net/assets/home/articles/icon-arrow-down-ea33c4b4c74ce0aca95580c70c5ba1f464ff5833213b0fc8db5de0fab98b57e1.svg) no-repeat 99% 50%;
+  cursor: pointer;
+}
+
+.search_wrap {
+    border: 1px solid #e9ecef;
+    font-size: 18px;
+    height: 45px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+}
+
+.search_txt {
+	width: 345px;
+	font-size: 18px;
+	border-color: transparent;
+}
+
+.search_btn {
+	background-color: #7A7A7A;
+    color: #FFFFFF;
+    width: 60px;
+    border-radius: 0 5px 5px 0;
+}
+
+/* 테이블 */
+.table_wrap {
+	width: 1300px;
+	height: 500px;
+}
+
+.table1, .table2, .table3 {
+      border-collapse: collapse;
+      width: 100%;
+}
+
+.table1 th, .table2 th, .table3  th {
+	  color: #0A0400;
+      background: #E5E9EA;
+      text-align: center;
+}
+
+.table1 th, .table2 th, .table3 th, .table1 td, .table2 td, .table3 td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+      font-size: 15px; 
+      height: 20px;
+      line-height: 20px;
+}
+
+table1 th:first-child, table td:first-child {
+      border-left: 0;
+}
+
+table th:last-child, table td:last-child {
+      border-right: 0;
+}
+
+table tr td:first-child, table td:last-child {
+      text-align: center;
+}
+
+#blockBtn,#unblockBtn {
+	width: 60px;
+	height: 25px;
+	background-color: #E74C3C;
+	border:1px solid #E74C3C;
+	border-radius: 6px;
+	color: #FFFFFF;
+}
+
+
+/* 페이지 */
+.page{
+	display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 90px 0;
+}
+
+.page-num{
+	font-size: 16px;
+    color: #000;
+	background-color: #F4F4F4;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 12px;
+}
+.page-num:hover{
+    color: #FFF;
+    background-color: #C89E6C;
+
+}
+
+.page-num-click{
+	font-size: 16px;
+    color: #000;
+	background-color: #C89E6C;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 12px;
+}

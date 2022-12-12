@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="potato.userReview">
+<!-- ////네비바//// -->
+	<select id="selMyImg" parameterType="potato.vo.MyReviewVO" resultType="String">
+	select img
+	from member
+	where id=#{id, jdbcType=VARCHAR}<!-- 방안1 -->
+	</select>
+	<select id="selMyNick" parameterType="potato.vo.MyReviewVO" resultType="String">
+	select nick
+	from member
+	where id='${id}'<!-- 방안2 -->
+	</select>
+	
+<!-- ///////////////////사용자리뷰조회////////////////////	 -->
+<!-- My리뷰조회 --> <!-- 쿼리 아직이라 다시 -->
+	<select id="selMyRevAll" parameterType="potato.vo.MyReviewVO" resultType="potato.domain.MyReviewDomain">
+		select
+		         (select listagg(img,',') img from review_img where review_idx=re.review_idx and restarea_idx =re.restarea_idx and id = re.id ) foodimg,
+		         (select img from member where id=re.id) img,
+		         (select nick from member where id=re.id) nick,
+		         re.review_idx, re.restarea_idx,
+		         (select name from restarea where restarea_idx = re.restarea_idx) name,
+		         re.contents, re.rating, re.id, re.post_date, (select count(id_clicker) from liked where review_idx = re.review_idx and id_writer=re.id and restarea_idx = re.restarea_idx  ) liked,
+		         (select count(*)
+		from  liked
+		where review_idx = re.review_idx  and restarea_idx  = re.restarea_idx  and id_writer=#{id} and id_clicker=#{id}) clickount
+		      from review re
+		      where re.id = #{id}
+		order by re.post_date desc, re.review_idx desc
+		offset (#{pageFlag}-1)*5 rows
+		fetch next 5 rows only
+	</select>
+<!-- ///////////////////좋아요한리뷰조회//////////////////// -->
+<!-- Like리뷰조회 --> <!-- 쿼리 아직이라 다시 -->
+	<select id="selLikeRevAll" parameterType="potato.vo.MyReviewVO" resultType="potato.domain.MyReviewDomain">
+		select
+			(select listagg(img,',') img from review_img where review_idx=re.review_idx and restarea_idx =re.restarea_idx and id = re.id ) foodimg,
+       		(select img from member where id=re.id) img, (select nick from member where id=re.id) nick, 
+       		re.review_idx, re.restarea_idx, 
+       		(select name from restarea where restarea_idx = re.restarea_idx) name, 
+       		re.contents, re.rating, re.id, re.post_date, 
+       		(select count(ID_clicker) from liked where REVIEW_IDX = re.REVIEW_IDX and ID_WRITER=re.ID and RESTAREA_IDX = re.RESTAREA_IDX  ) liked
+		from review re, liked l
+		where (l.id_writer(+) = re.id and l.restarea_idx(+) = re.restarea_idx and l.review_idx = re.review_idx) and l.id_clicker = #{id}
+		order by re.post_date desc, re.review_idx desc
+		offset (#{pageFlag}-1)*5 rows
+		fetch next 5 rows only
+	</select>
+<!-- ///////////////////페이징//////////////////// -->	
+	<!-- 내가 쓴총 리뷰수 -->
+	<select id="selTotalReview" parameterType="potato.vo.MyReviewVO" resultType="int">
+	select count(*) cnt
+	from review 
+	where id=#{id}
+	</select>
+	
+	<!-- 내가 좋아요한 총리뷰수 -->
+	<select id="selTotalLikedReview" parameterType="potato.vo.MyReviewVO" resultType="int">
+		select count(*)
+		from review re, liked l
+		where (l.id_writer(+) = re.id and l.restarea_idx(+) = re.restarea_idx and l.review_idx = re.review_idx) and l.id_clicker = #{id}
+	</select>
+	
+	
+	
+</mapper>

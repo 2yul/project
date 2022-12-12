@@ -1,0 +1,289 @@
+@charset "UTF-8";
+
+.container {
+	background: #fdf7ef;
+}
+
+.main{
+	display:flex;
+}
+
+.title {
+    width: 1300px;
+    font-size: 34px;
+    font-weight: bold;
+    color: #593000;
+    padding-bottom: 10px;
+}
+
+.empty{
+	display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-top: 55px;
+    width: 1122px;
+    height: 300px;
+    align-items: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #593000;
+}
+
+.review{
+	width:1650px;
+}
+
+/* 리뷰 */
+.star-rate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.star-blank {
+	width: 100px;
+	background-color: bebebe;
+}
+
+.star-blank {
+	display: inline-block;
+	height: 20px;
+	overflow: hidden;
+	background: url(../images/starblank.png);
+	background-size: 20px;
+}
+
+.star-wrap {
+	position: absolute;
+    top: 268.3px;
+    width: 100px;
+    height: 20px;
+}
+
+.star {
+	display: inline-block;
+	height: 20px;
+	overflow: hidden;
+	background: url(../images/star.png);
+	background-size: 20px;
+	background-position: left bottom;
+}
+
+.rate-txt {
+	color: #f1c40f;
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.bi-star-fill {
+	width: 15px;
+	height: 15px;
+}
+
+.review-link {
+    font-size: 20px;
+    background: #C89E6C;
+    color: #fff;
+    padding-right: 145px;
+    padding-left: 145px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.review-wrap {
+	width: 1300px;
+    margin: 0 auto;
+    margin-top: 120px;
+}
+
+.review-txt > div > span:last-child {
+	color: #593000;
+}
+
+
+.review-exist {
+	width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 40px;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #333333;
+}
+
+.re-left > img {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	margin-right: 20px;
+}
+
+.re-star-wrap {
+	position: absolute;
+    width: 100px;
+    height: 20px;
+}
+
+.re-right > span {
+	font-size: 17px;
+    font-weight: bold;	
+}
+
+.re-txt {
+	margin-top: 10px;
+    line-height: 1.5;	
+}
+
+.re-slider {
+    display: flex;
+    align-items: center;
+    width: 1200px;
+}
+
+.re-mySwiper {
+	width: 1150px;
+    background: transparent;
+    margin-top: 10px;
+}
+
+.re-swiper-wrapper{
+	width: 1150px;
+    margin: 0 auto;
+}
+
+.re-swiper-slide {
+	width: 285.5px !important;
+}
+
+.re-foodimg {
+	width: 285.5px;
+	height: 200px;
+}
+
+.re-swiper-button-prev {
+	left: 00px;
+    right: auto;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+}
+
+.re-swiper-button-next {
+    right: 0px;
+    left: auto;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;	
+}
+
+.etc-icon-wrap {
+	margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 1200px;
+    margin-bottom: 10px;
+}
+
+.etc-icon {
+	display: flex;
+}
+
+.heart-icon-wrap, .report-icon, .edit-icon, .delete-icon {
+	display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.heart-btn, .report-btn, .edit-link, .delete-btn {
+	display: flex;
+	background: transparent;
+	color: #333333;
+	margin-right: 5px;
+}
+
+.heart-icon-wrap > span, .report-icon > span, .edit-icon > span, .delete-icon > span {
+	font-size: 15px;
+}
+
+.heart-btn:hover {
+	animation-duration: 2s;
+	animation-name: heart;
+	animation-iteration-count: infinite;
+}
+
+@keyframes heart {
+	0% {transform: scale(1.2);}
+	10% {transform: scale(0.9);}
+	20% {transform: scale(1.2);}
+	30% {transform: scale(0.9);}
+	40% {transform: scale(1.2);}
+	50% {transform: scale(0.9);}
+	60% {transform: scale(1.2);}
+	70% {transform: scale(0.9);}
+	80% {transform: scale(1.2);}
+	90% {transform: scale(0.9);}
+	100% {transform: scale(1.2);}
+}
+
+.hb-fill {
+	color: red;
+}
+
+.bi-bell-fill:hover {
+	animation-duration: 2s;
+	animation-name: bell;
+	animation-iteration-count: infinite;	
+	color: #ffca2b;
+}
+
+@keyframes bell {
+	0%, 50% {transform: rotate(0deg);}
+	5%, 15%, 25%, 35%, 45%  {transform: rotate(13deg);}
+	10%, 20%, 30%, 40% {transform: rotate(-13deg);}
+}
+
+.date {
+	font-size: 15px;
+	margin-right: 10px;
+}
+/* 리뷰 */
+
+/* 페이지 */
+.page{
+	display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.page-num{
+	font-size: 16px;
+    color: #000;
+	background-color: #F4F4F4;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 12px;
+}
+.page-num:hover{
+    color: #FFF;
+    background-color: #C89E6C;
+
+}
+
+.page-num-click{
+	font-size: 16px;
+    color: #000;
+	background-color: #C89E6C;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 12px;
+}

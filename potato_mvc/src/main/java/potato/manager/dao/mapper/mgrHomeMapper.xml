@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="potato.manager.mgrHomeMapper">
+
+	<!-- 오늘 신규가입 수 -->
+	<select id="selectNewMemCnt" resultType="int">
+	select count(*)
+	from member
+	where to_char(join_date,'yyyymmdd')=to_char(sysdate,'yyyymmdd')
+	</select>
+	<!-- 오늘 신고 수 -->
+	<select id="selectReportCnt" resultType="int">
+	select count(*)
+	from report
+	where to_char(report_date,'yyyymmdd')=to_char(sysdate,'yyyymmdd')
+	</select>
+	<!-- 인기 휴게소(1) -->
+	<select id="selectPopOne" resultType="String">
+	select name
+	from ( select rev.restarea_idx, name, rating, cnt
+			from ( select restarea_idx, avg(rating) rating, count(review_idx) cnt
+					from review
+					group by restarea_idx ) rev, restarea res
+			where (rev.restarea_idx=res.restarea_idx)
+			order by rating desc, cnt desc)
+	where rownum= 1
+	</select>
+	<!-- 관심 휴게소 -->
+	<select id="selectBookmark" resultType="String">
+	select name
+	from (select b.restarea_idx, name, bookmarkcnt
+			from (select restarea_idx, count(*) bookmarkcnt
+				from bookmark
+				group by restarea_idx) b, restarea res
+			where (b.restarea_idx=res.restarea_idx)
+			order by bookmarkcnt desc)
+	where rownum = 1
+	</select>
+	<!-- 방문자현황(일주일 날짜) -->
+	<select id="selectVisitDate" parameterType="int" resultType="String">
+	select *
+	from( select to_char(access_date,'mmdd') visitDate from visitor
+			group by to_char(access_date,'mmdd')
+			order by to_char(access_date,'mmdd') desc )
+	<where>
+	<if test="DateFlag == 0">
+	visitDate=to_char(sysdate,'mmdd')	
+	</if>
+	<if test="DateFlag == 1">
+	visitDate=to_char(sysdate-1,'mmdd')	
+	</if>
+	<if test="DateFlag == 2">
+	visitDate=to_char(sysdate-2,'mmdd')	
+	</if>
+	<if test="DateFlag == 3">
+	visitDate=to_char(sysdate-3,'mmdd')	
+	</if>
+	<if test="DateFlag == 4">
+	visitDate=to_char(sysdate-4,'mmdd')
+	</if>
+	<if test="DateFlag == 5">
+	visitDate=to_char(sysdate-5,'mmdd')
+	</if>
+	<if test="DateFlag == 6">
+	visitDate=to_char(sysdate-6,'mmdd')	
+	</if>
+	</where>		
+	</select>
+	<!-- 방문자현황(오늘,어제,총) -->
+	<select id="selectVisitorCnt" parameterType="int" resultType="int">
+	 select count(visitdate) visitcnt
+ 	from (select ip, to_char(access_date,'yyyymmdd') visitdate  from visitor
+			group by ip, to_char(access_date,'yyyymmdd')
+			order by visitdate)  
+	<where>
+	<if test="visitFlag == 6">
+	visitdate=to_char(sysdate-6,'yyyymmdd')
+	</if>
+	<if test="visitFlag == 5">
+	visitdate=to_char(sysdate-5,'yyyymmdd')
+	</if>
+	<if test="visitFlag == 4">
+	visitdate=to_char(sysdate-4,'yyyymmdd')
+	</if>
+	<if test="visitFlag == 3">
+	visitdate=to_char(sysdate-3,'yyyymmdd')
+	</if>
+	<if test="visitFlag == 2">
+	visitdate=to_char(sysdate-2,'yyyymmdd')
+	</if>
+	<if test="visitFlag == 1">
+	visitdate=to_char(sysdate-1,'yyyymmdd')
+	</if>
+	<if test="visitFlag == 0">
+	visitdate=to_char(sysdate,'yyyymmdd')
+	</if>
+	<if test="visitFlag == 10">
+	1 = 1
+	</if>
+	</where>
+	</select>
+	<!-- 회원현황(전체) -->
+	<select id="selectAllMem" resultType="int">
+	select count(*)
+	from member
+	where quit='N'
+	</select>
+	<!-- 회원현황(탈퇴) -->
+	<select id="selectQuitMem" resultType="int">
+	select count(*)
+	from member
+	where to_char(quit_date,'yyyymmdd')=to_char(sysdate,'yyyymmdd')
+	</select>
+	<!-- 인기 휴게소(5) -->
+	<select id="selectPopAll" resultType="String">
+	select name
+	from ( select rev.restarea_idx, name, rating, cnt
+			from ( select restarea_idx, avg(rating) rating, count(review_idx) cnt
+					from review
+					group by restarea_idx ) rev, restarea res
+			where (rev.restarea_idx=res.restarea_idx)
+			order by rating desc, cnt desc)
+	where rownum between 1 and 5
+	</select>
+
+</mapper>

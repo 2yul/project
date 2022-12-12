@@ -1,0 +1,81 @@
+@charset "UTF-8";
+/* loginBox */
+.wrap{
+	height: 100vh;
+}
+.wrap .container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.container {
+	padding-top:0;	
+}
+
+.logo {
+	margin-top:50px;
+	display: flex;
+    justify-content: center;
+}
+
+.logo > a > img {
+	width: 140px;
+	height: 145px;
+}
+
+.box-login {
+	border: 1px solid #EEE;
+	display: block;
+	margin: 0px auto;
+	text-align: center;
+	width: 550px;
+	background-color: white;
+}
+.login-top{
+	font-size: 30px;
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+.login-main{
+	margin-bottom: 50px;
+}
+
+.id {
+	height: 40px;
+	margin: 30px 30px 5px 30px;
+	border: 1px solid #EEE;
+	width: 400px;
+	margin: 10px;
+	border-width: 0px 0px 1px 0px;
+	border-bottom-color: #A5A5A5;
+}
+.pass {
+	height: 40px;
+	margin: 5px 30px 30px 30px;
+	border: 1px solid #EEE;
+	width: 400px;
+	margin: 10px;
+	border-width: 0px 0px 1px 0px;
+	border-bottom-color: #A5A5A5;
+}
+.loginBtn{
+	width: 400px;
+	height: 45px;
+	cursor: pointer;
+	background-color: #DEAE75;
+	border: 0px;
+	margin: 20px;
+	font-size: 15px;
+}
+.info-sign{
+	float: left;
+	margin: 0px 0px 40px 40px;
+}
+
+.info-find{
+	float: right;
+	margin: 0px 40px 40px 0px;
+}

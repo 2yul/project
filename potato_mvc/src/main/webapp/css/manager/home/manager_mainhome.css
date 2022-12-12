@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+/* 컨테이너 */
+.main {
+    display: block;
+    width: 1300px;
+    margin: 0 0 50px 330px;
+}
+
+.text {
+    margin: 15px;
+    color: #5C3300;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.top-dash{
+	display: flex;
+    justify-content: center;
+}
+
+.top{
+	display: inline-block;
+	margin: 0 30px 30px 0;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px;
+}
+
+.board{
+	display: inline-block;
+	margin: 27px 12px;
+}
+
+.board-text-1{
+	display: inline-block;
+	color: #5C3300;
+	font-size: 22px;
+	font-weight: bold;
+	margin-bottom:8px;
+}
+
+.board-text-2{
+	display: inline-block;
+	font-size: 17px;
+}
+
+.label {
+	margin-left: 15px;
+	color: #5C3300;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.graph1 {
+    background-color: white;
+    width: 780px;
+    height: 500px;
+    display: inline-block;
+    border-radius: 5px;
+    margin-right: 2.5px;
+    margin-bottom: 2.5px;
+    padding: 0 20px;
+}
+
+.graph2 {
+	background-color: white;
+	width:450px;
+    height: 500px;
+	display: inline-block;
+	border-radius: 5px;
+	margin-left: 2.5px;
+	margin-bottom: 2.5px;
+}
+
+.graph1-list {
+	width: 420px;
+	height: 350px;
+	background-color: white;
+	display: inline-block;
+	border-radius: 5px;
+	margin-right: 2.5px;
+	margin-top: 5px;
+}
+
+.graph2-list {
+	width: 420px;
+	height: 350px;
+	background-color: white;
+	display: inline-block;
+	border-radius: 5px;
+	margin-right: 2.5px;
+	margin-left: 2.5px;
+	margin-top: 5px;
+}
+
+.rank {
+	width: 420px;
+	height: 350px;
+	background-color: white;
+	display: inline-block;
+	border-radius: 5px;
+	margin-left: 2.5px;
+	margin-top: 5px;
+}
+
+.list-label-1 {
+	margin: 20px;
+}
+
+.list-label-2 {
+	width: 360px;
+	margin: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.list-label-3 {
+    margin: 20px 115px 25px 115px;
+    padding-bottom: 10px;
+    text-align: center;
+    border-bottom: 2px solid #000;
+}
+
+.list-text-1 {
+	width: 350px;
+	margin: 30px;
+	font-size: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.list-text-2 {
+	width: 350px;
+	margin: 10px 30px;
+	padding: 30px 0;
+	font-size: 20px;
+	display: flex;
+	justify-content: space-between;
+	border-top: 1px solid grey;
+	border-bottom: 1px solid grey;
+}
+
+.list-text-3 {
+	font-size: 23px;
+    margin: 15px 0;
+}

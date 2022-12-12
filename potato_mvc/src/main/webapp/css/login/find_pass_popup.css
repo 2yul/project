@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/* loginBox */
+.box-title{
+	font-size: 24px;
+	margin: 30px 20px 10px 20px;
+}
+.input-title{
+	text-align: left;
+	margin: 5px 0px 5px 25px;
+}
+
+.box-main {
+	border: 1px solid #EEE;
+	display: block;
+	margin: 0px auto;
+	text-align: center;
+	width: 320px;
+	height: 250px;
+	padding: 0px auto;
+	background-color: white;
+}
+
+
+.main-container{
+	display: block;
+	padding: 0px 50px 50px 50px;
+	padding: 0px;
+}
+
+
+.loginBtn{
+	width: 260px;
+	height: 40px;
+	cursor: pointer;
+	background-color: #DEAE75;
+	border: 0px;
+	margin: 20px 10px 5px 10px;
+	font-size: 17px;
+}
+
+.text-read {
+	height: 40px;
+	margin: 10px;
+	width: 300px;
+	border: 0px;
+	text-align: center;
+	font-size: 27px;
+}

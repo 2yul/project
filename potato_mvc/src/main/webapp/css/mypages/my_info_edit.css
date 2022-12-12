@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+.info_edit{
+	width: 1300px;
+    margin: 0 auto;
+    margin-top: 120px;
+}
+.title{
+    width: 1300px;
+    font-size: 34px;
+    font-weight: bold;
+    color: #593000;
+    padding-bottom: 10px;
+}
+.info_edit>table {
+	width: 1200px;
+} 
+table{
+	width: 1155px;
+    margin: 25px 0 55px 0;
+}
+.profile_img{
+	display: flex;
+	align-items: center;
+}
+
+.img_btn{
+	background-color:#DCC1A0;
+	color: #593000;
+	width: 90px;
+	height: 50px;
+	border: 0px;
+	border-radius: 5px;
+	margin-right: 10px;
+	font-size: 15px;
+}
+.img_del_btn{
+	background-color: #575757;
+	width: 70px;
+	height: 50px;
+	color: white;
+	border: 0px;
+	border-radius: 5px;
+	font-size: 15px;
+}
+
+.birth{
+	 padding-left: 10px;
+	 border: 1px solid #dedede;
+	 border-radius: 5px;
+	 height: 40px;
+}
+div.info_edit table th{
+	background-color: #DCC1A0;
+	color: #593000;
+	vertical-align: middle;
+	letter-spacing: -1px;
+	padding: 3px 0 0;
+	height: 70px;
+	width:190px;
+	font-size: 17px;
+	
+}
+div.info_edit table td{
+	border-bottom: 1px solid #ddd;
+	border-right:1px solid #ddd;
+	border-top: 1px solid #ddd;
+	background-color: #fff;
+}
+.info_edit>form>table>tbody>tr>td {
+	padding: 15px 5px 15px 25px;
+}
+.info_edit table tr td input[type="text"] {
+	height: 40px;
+	border: 1px solid #dedede;
+	font-size: 14px;
+	padding-left: 10px;
+	vertical-align: middle;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+.info_edit table tr td input[type="password"] {
+	height: 40px;
+	border: 1px solid #dedede;
+	font-size: 14px;
+	padding: 0 20px;
+	vertical-align: middle;
+	box-sizing: border-box;
+}
+
+.edit_btn{ 
+    display: block;
+    margin: 0px auto;
+    margin-bottom: 100px;
+    width: 130px;
+    height: 55px;
+    background-color: #DCC1A0;
+    color: #593000;
+    border-radius: 5px;
+    font-size: 18px;
+}
+/* 사진등록  */
+.upload-button {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+}
+.upload-button input[type=file] {
+	font-size: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+.info_edit table tr td input[type="file"] {
+	width: 60%;
+	height: 42px;
+	border: 1px solid #dedede;
+	font-size: 14px;
+	padding: 7px 20px;
+	vertical-align: middle;
+	box-sizing: border-box;
+}
+.upoad-button {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+}

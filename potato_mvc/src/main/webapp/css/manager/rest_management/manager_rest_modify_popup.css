@@ -1,0 +1,297 @@
+@charset "UTF-8";
+
+.popup-wrap{
+	width:900px;
+	display:flex;
+	flex-direction:column;
+	padding:20px;
+}
+
+.rest-name{
+	display:flex;
+	flex-direction:column;
+}
+
+.name{
+	display:flex;
+	justify-content:space-around;
+	margin-bottom:15px;
+}
+
+.name>span{
+	font-size:30px;
+	font-weight:bold;
+}
+
+.name>input{
+	width:750px;	
+	border: 1px solid #ddd;
+	border-radius:5px;
+	font-size:18px;
+}
+
+.tumbnail{
+	display:flex;
+	align-items:center;
+}
+
+.tumbnail>img{
+	width:180px;
+	height:300px;
+	margin-right:20px;
+}
+
+.tumbnail-btn-wrap{
+	display:flex;
+	flex-direction:column;
+	width:200px;
+}
+
+.tumbnail-btn-wrap span{
+	text-align:center;
+	font-size:18px;
+	font-weight:bold;
+	margin-bottom: 10px;
+}
+
+/*  .tumbnail-btn-wrap div{
+	display:flex;
+ 	justify-content:space-around;
+}  */
+
+.file-btn-wrap{
+	display:flex;
+	justify-content:space-around;
+	position:relative;
+	
+}
+
+.round-blue-btn{
+	width: 90px;
+    height: 30px;
+    background-color: #3498DB;
+    border-radius: 20px;
+    color: #fff;
+    border:0px;
+	cursor:pointer;
+}
+
+.fileup{
+	position: absolute;
+    left: 55px;
+    top: 0;
+    opacity: 0;
+    width: 45%;
+    height: 100%;
+}
+
+
+.sep{
+	margin-top:20px;
+	margin-bottom:20px;
+	border:1px solid grey;
+}
+
+.rest-food{
+	position:relative;
+	display:flex;
+	flex-direction:column;
+}
+
+.food-head{
+	display:flex;
+	margin-bottom:15px;
+}
+
+.food-head span{
+	font-size:30px;
+	font-weight:bold;
+	margin-right:10px;
+}
+
+.img-btn-wrap{
+	width:70px;
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+}
+
+.plus-btn{
+	width:30px;
+	height:30px;
+	background-color:transparent;
+	border:solid 3px black;
+	border-radius: 6px;
+	font-size:15px;
+	font-weight:bold;
+}
+
+.minus-btn{
+	width:30px;
+	height:30px;
+	background-color:transparent;
+	border:solid 3px black;
+	border-radius: 6px;
+	font-size:15px;
+	font-weight:bold;
+}
+
+.food-info{
+	width:700px;
+	display:flex;
+	flex-direction:column;
+	margin-bottom:10px;
+}
+
+.food-info>span{
+	position:relative;
+	width:90px;
+	margin-bottom:10px;	
+}
+
+.fileup2{
+	position: absolute;
+    left: 0px;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.food-detail{
+	display:flex;
+	align-items:center;
+}
+
+.food-img-wrap{
+	margin-right:20px;
+}
+
+.food-img-wrap img {
+	width:180px;
+	height:300px;
+}
+
+.food-content{
+	height:300px;
+	display:flex;
+	flex-direction:column;
+	justify-content:space-around;
+	margin-right:20px;
+}
+
+.food-content>span>span{
+	vertical-align:top;
+}
+
+.food-content>span>[type='text']{
+	width:150px;
+	height:30px;
+	border-radius:5px;
+	border: 1px solid #ddd;
+}
+
+.food-content>span>textarea{
+	width:300px;
+	height:90px;
+	border-radius:5px;
+	border: 1px solid #ddd;
+	resize:none;
+}
+
+.appendBtn {
+	position:absolute;
+	left:740px;
+	top:140px;
+	
+}
+
+
+.rest-info{
+	display:flex;
+	flex-direction:column;
+	margin-bottom:20px;	
+}
+
+.rest-info>span{
+	font-size:30px;
+	font-weight:bold;
+	margin-bottom:15px;
+}
+
+.info-wrap{
+	height:400px;
+	display:flex;
+	flex-direction:column;
+	justify-content:space-around;
+}
+
+.info-wrap>div>[type='text']{
+	width:150px;
+	height:30px;
+	border-radius:5px;
+	border: 1px solid #ddd;
+}
+
+.info-wrap>div>select{
+	height:30px;
+	font-size:15px;
+	margin-right:10px;
+	border: 1px solid #ddd;
+	border-radius:5px;
+}
+
+.info-wrap>div>span+select{
+	margin-left:27px;
+}
+
+.amenity-wrap{
+	display:flex;
+	align-items:center;
+}
+
+.amenity-wrap>span{
+	margin-right:10px;
+	text-align:center;
+}
+
+.icon-wrap {
+	border:1px solid #E0E0E0;
+	width:810px;
+	height:65px;
+	display:flex;
+	flex-direction:column;
+	font-size:15px;
+	padding:5px;
+}
+
+.icon-sector {
+	display:flex;
+	align-items: center;
+	justify-content:space-around;
+	height:70px;
+}
+
+.icon-sector span{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+}
+
+.icon-sector>span img{
+	width:30px;
+	height:30px;
+}
+
+.buttom{
+	text-align:center;
+}
+
+.square-blue-btn{
+	width: 100px;
+    height: 40px;
+    background-color: #3498DB;
+    border-radius:5px;
+    color: #fff;
+}
+

@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/* loginBox */
+.wrap{
+	height: 100vh;
+	background-color: #fdf7ef;
+}
+.wrap .container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.title-top{
+	font-size: 30px;
+	margin: 2px auto;
+	text-align:center;
+	display: flex;
+}
+.box-main{
+	display: flex;
+    flex-direction: column;
+}
+
+ul,
+ol {
+ list-style: none;
+}
+
+dl {
+ width: 600px;
+ margin: 50px auto;
+}
+
+dt {
+ font-size: 18px;
+ height: 50px;
+ line-height: 50px;
+ text-indent: 30px;
+ color: #fff;
+ background: black;
+ cursor: pointer;
+}
+
+body > dl > dt:first-child {
+ background: rgb(50, 192, 145);
+}
+
+body > dl > dt:nth-child(3) {
+ background: rgb(126, 126, 126);
+}
+
+dd {
+ padding: 30px;
+ background: #d4d0c8;
+}
+
+dd ul li {
+ padding-bottom: 10px;
+}
+li{
+	font-size: 17px;
+}

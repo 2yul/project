@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="potato.detailedMapper">
+
+<!-- 휴게소 상세창 불러오기 -->
+<select id="selRestDetailed" resultType="potato.domain.DetailedDomain" parameterType="Integer">
+	select name, lng, lat, tel, carwash_chk, repair_chk, cargolounge_chk, line, kr_do
+	from restarea r, line l, do d
+	where r.do_idx=d.do_idx and r.line_idx=l.line_idx and restarea_idx=#{restarea_idx}
+</select>
+
+<!-- 북마크 total  -->
+<select id="selBookmarkToTal" resultType="int" parameterType="int">
+	select count(*) total
+	from bookmark
+	where restarea_idx=#{restarea_idx}
+</select>
+
+<!-- 북마크 여부 -->
+<select id="selBookmarkChk" resultType="int" parameterType="potato.vo.DetailedBookmarkVO">
+	select count(*) chk
+	from bookmark
+	where restarea_idx=#{restarea_idx} and id=#{id}
+</select>
+
+<!-- 북마크 추가 -->
+<insert id="insBookmarkAdd" parameterType="potato.vo.DetailedBookmarkVO">
+	insert into bookmark(id, restarea_idx)
+	values (#{id}, #{restarea_idx})
+</insert>
+
+<!-- 북마크 해제 -->
+<delete id="delBookmarkDel" parameterType="potato.vo.DetailedBookmarkVO">
+	delete from bookmark
+	where restarea_idx=#{restarea_idx} and id=#{id}
+</delete>
+
+<!-- 휴게소 별점 total -->
+<select id="selRateTotal" resultType="int" parameterType="int">
+	select nvl(avg(rating),0)
+	from review
+	where restarea_idx=#{restarea_idx}
+</select>
+
+<!-- 휴게소 음식 정보 -->
+<select id="selFoodDatailed" resultType="potato.domain.DetailedFoodDomain" parameterType="int">
+	select main_chk, rec_chk, img, name, price, contents, ingredient
+	from restarea_food
+	where restarea_idx=#{restarea_idx}
+</select>                                                                                                                                                                                                   
+
+<!-- 휴게소 편의시설아이콘 -->
+<select id="selAmenityImg" resultType="potato.domain.DetailedAmenityDomain" parameterType="int">
+	select amenity_type, icon
+	from restarea_amenity
+	where restarea_idx=#{restarea_idx}
+</select>
+
+<!-- 리뷰 작성창 이동 -->
+<select id="selReviewWrite" resultType="potato.domain.DetailedReviewDomain" parameterType="int">
+	select name, restarea_idx
+	from restarea
+	where restarea_idx=#{restarea_idx}
+</select>
+
+<!-- 리뷰 수정창 이동 -->
+<select id="selReReviewWrite" resultType="potato.domain.DetailedReviewDomain" parameterType="potato.vo.DetailedReviewVO">
+	select review_idx, id, r.restarea_idx, rating, contents, name
+	from review r, restarea rest
+	where rest.restarea_idx=r.restarea_idx and r.restarea_idx=#{restarea_idx} and review_idx=#{review_idx}
+</select>
+
+<!-- 리뷰 수정창 이미지 불러오기 -->
+<select id="selReReviewImg" resultType="potato.domain.WriteReviewDomain" parameterType="potato.vo.DetailedReviewVO">
+	select img_idx, img
+	from review_img
+	where restarea_idx=#{restarea_idx} and review_idx=#{review_idx}
+	order by img_idx
+</select>
+
+<!-- 리뷰 총 total -->
+<select id="selReviewTotal" resultType="int" parameterType="int">
+	select count(*) rtotal
+	from review
+	where restarea_idx=#{restarea_idx}
+</select>
+
+<!-- 리뷰 총 합계 -->
+<select id="selReviewSum" resultType="int" parameterType="int">
+	select nvl(sum(rating),0) rSum
+	from review
+	where restarea_idx=#{restarea_idx}
+</select>
+
+<!-- 리뷰 조회 -->
+<select id="selReviewAll" resultType="potato.domain.DetailedReviewDomain" parameterType="potato.vo.DetailedReviewVO">
+<!--  리뷰 조회(최신순) -->
+select r.review_idx, r.id, m.nick, m.img, regexp_replace(listagg(ri.img, ',') within group(order by img_idx), '([^,]+)(,\1)+', '\1') foodimg,
+			regexp_replace(listagg(id_clicker, ',') within group(order by l.review_idx), '([^,]+)(,\1)+', '\1') idclick,
+			nvl(regexp_count(regexp_replace(listagg(id_clicker, ',') within group(order by l.review_idx), '([^,]+)(,\1)+', '\1'), ',')+1,0) liked, r.rating, r.contents, r.post_date
+from   review_img ri, review r, liked l, member m
+where  (ri.review_idx(+)=r.review_idx and ri.id(+)=r.id and ri.restarea_idx(+)=r.restarea_idx
+			and l.review_idx(+)=r.review_idx and l.restarea_idx(+)=r.restarea_idx
+			and m.id(+)=r.id)and r.restarea_idx=#{restarea_idx}
+group by r.review_idx, r.id, r.rating, r.contents, r.post_date, m.nick, m.img
+<if test="dateFlag eq 1">
+order by post_date desc, review_idx desc
+</if>
+<if test="dateFlag eq 2">
+order by post_date, review_idx
+</if>
+offset #{addFlag}*5+0 rows
+fetch next 5 rows only
+</select>
+
+<!-- 좋아요 여부 -->
+<select id="selLikeChk" resultType="int" parameterType="potato.vo.DetailedLikeVO">
+select count(*) lcnt 
+from liked 
+where id_clicker=${id_clicker} and review_idx=${review_idx} and id_writer=${id_writer} and restarea_idx=${restarea_idx}
+</select>
+
+<!-- 리뷰 좋아요 추가 -->
+<insert id="insLikeAdd" parameterType="potato.vo.DetailedLikeVO">
+insert into liked(id_clicker, review_idx, id_writer, restarea_idx)
+values (#{id_clicker}, #{review_idx}, #{id_writer}, #{restarea_idx})
+</insert>
+
+<!-- 리뷰 좋아요 삭제 -->
+<delete id="delLikeDel" parameterType="potato.vo.DetailedLikeVO">
+delete from liked
+where id_clicker=#{id_clicker} and review_idx=#{review_idx} and restarea_idx=#{restarea_idx}
+</delete>
+
+<!-- 리뷰 삭제 -->
+<delete id="delReviewDel" parameterType="potato.vo.DetailedReviewVO">
+delete from review
+where review_idx=#{review_idx} and restarea_idx=#{restarea_idx}
+</delete>
+
+<!-- 신고창 접속 -->
+<select id="selReportPopup" resultType="potato.domain.DetailedReportDomain">
+select report_idx, reason
+from report_reason
+</select>
+
+<!-- 신고 접수 -->
+<insert id="insReportPopup" parameterType="potato.vo.DetailedReportVO">
+insert into report(id_reporter, id_writer, report_idx, restarea_idx, review_idx)
+values (#{id_reporter}, #{id_writer}, #{report_idx}, #{restarea_idx}, #{review_idx})
+</insert>
+
+<!-- 신고 접수 유무ㅡ -->
+<select id="selReportPopupChk" resultType="int" parameterType="potato.vo.DetailedReportVO">
+select count(*) rpcnt
+from report
+where id_reporter=#{id_reporter} and review_idx=#{review_idx} and restarea_idx=#{restarea_idx}
+</select>
+
+</mapper>

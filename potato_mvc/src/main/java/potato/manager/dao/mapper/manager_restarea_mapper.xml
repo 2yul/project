@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="potato.manager.rest">
+	
+	<select id="selectRestarea" parameterType="potato.manager.vo.SearchRestVO" resultType="potato.manager.domain.RestDomain">
+		select re.restarea_idx, re.name, re.tel,
+		   
+			( select img
+ 			  from( select RESTAREA_IDX,AMENITY_TYPE,listagg(icon,',') within group(order by ICON) img
+			        from restarea_amenity
+			        group by RESTAREA_IDX, AMENITY_TYPE)
+ 			  where restarea_idx = re.restarea_idx and AMENITY_TYPE='A') retAmImgs,
+
+			( select img
+ 			  from( select RESTAREA_IDX,AMENITY_TYPE,listagg(icon,',') within group(order by ICON) img
+			        from restarea_amenity
+			        group by RESTAREA_IDX, AMENITY_TYPE)
+              where restarea_idx = re.restarea_idx and AMENITY_TYPE='B') gasAmImgs,
+
+			case when CARWASH_CHK='Y' then 'O'
+					 when CARWASH_CHK='N' then 'X'
+			     end CARWASH_CHK,
+			case when REPAIR_CHK='Y' then 'O'
+					 when REPAIR_CHK='N' then 'X'
+			     end REPAIR_CHK,
+			case when CARGOLOUNGE_CHK='Y' then 'O'
+					 when CARGOLOUNGE_CHK='N' then 'X'
+			     end CARGOLOUNGE_CHK
+		from  restarea re
+		<where>
+		1=1
+		<if test="lineFlag != 0">
+		and re.line_idx = #{lineFlag}
+		</if>	
+		<if test="keyword != null and keyword != ''">
+		and re.name like '%'||#{keyword}||'%'
+		</if>
+		<if test='carwash_chk =="Y"'>
+		and re.carwash_chk =#{carwash_chk}
+		</if>
+		<if test='repair_chk =="Y"'>
+		and re.repair_chk =#{repair_chk}
+		</if>
+		<if test='cargolounge_chk =="Y"'>
+		and re.cargolounge_chk =#{cargolounge_chk}
+		</if>
+		</where>
+		order by restarea_idx
+		offset (#{pageFlag}-1)*10 rows
+		fetch next 10 rows only
+	</select> 
+	
+	<select id="getLine" resultType="potato.manager.domain.LineDomain">
+		select line_idx, line
+	    from LINE
+	    order by line_idx
+	</select>
+	
+	<select id="selectRestTotal" parameterType="potato.manager.vo.SearchRestVO" resultType="int" >
+		select count(*) cnt
+		from  restarea re
+		<where>
+		1=1
+		<if test="lineFlag != 0">
+		and re.line_idx = #{lineFlag}
+		</if>	
+		<if test="keyword != null and keyword != ''">
+		and re.name like '%'||#{keyword}||'%'
+		</if>
+		<if test='carwash_chk =="Y"'>
+		and re.carwash_chk =#{carwash_chk}
+		</if>
+		<if test='repair_chk =="Y"'>
+		and re.repair_chk =#{repair_chk}
+		</if>
+		<if test='cargolounge_chk =="Y"'>
+		and re.cargolounge_chk =#{cargolounge_chk}
+		</if>
+		</where>
+	</select>
+	
+	<select id="selectRestDetail" parameterType="int" resultType="potato.manager.domain.RestDomain">
+		select RESTAREA_IDX,NAME, LNG, LAT,
+		       (select line from line where line_idx=ra.line_idx) line, TEL,
+		       (select avg(rating) from review where restarea_idx= #{idx}) totalrating,
+		       (select count(*) from bookmark where restarea_idx= #{idx}) bookmark_cnt,
+		
+		       ( select img
+		         from( select RESTAREA_IDX,AMENITY_TYPE,listagg(icon,',') within group(order by ICON) img
+					   from restarea_amenity
+					   group by RESTAREA_IDX, AMENITY_TYPE )
+		   	     where restarea_idx = #{idx} and AMENITY_TYPE='A') retAmImgs,
+		
+			   ( select img
+		         from( select RESTAREA_IDX,AMENITY_TYPE,listagg(icon,',') within group(order by ICON) img
+					   from restarea_amenity
+					   group by RESTAREA_IDX, AMENITY_TYPE)
+		         where restarea_idx = #{idx} and AMENITY_TYPE='B') gasAmImgs,
+		
+			     case when CARWASH_CHK='Y' then 'O'
+					      when CARWASH_CHK='N' then 'X'
+			          end CARWASH_CHK,
+			     case when REPAIR_CHK='Y' then 'O'
+					      when REPAIR_CHK='N' then 'X'
+			          end REPAIR_CHK,
+			     case when CARGOLOUNGE_CHK='Y' then 'O'
+					      when CARGOLOUNGE_CHK='N' then 'X'
+			          end CARGOLOUNGE_CHK
+		
+		from restarea ra
+		where restarea_idx=#{idx}	
+	</select>
+	
+	<select id="selectFood" parameterType="int" resultType="potato.manager.domain.FoodDomain">
+		select FOOD_IDX, MAIN_CHK, REC_CHK, IMG, NAME, PRICE, CONTENTS, INGREDIENT
+		from  RESTAREA_FOOD
+		where restarea_idx = #{idx}
+		order by food_idx	
+	</select>
+	
+	<select id="getDo" resultType="potato.manager.domain.DoDomain">
+		select do_idx, kr_do
+ 		from do	
+ 	</select>
+ 	
+ 	<insert id="insertRest" parameterType="potato.manager.vo.RestVO">
+ 		insert into
+		RESTAREA(RESTAREA_IDX,IMG, NAME, LNG, LAT, LINE_IDX, DO_IDX, TEL, CARWASH_CHK, REPAIR_CHK, CARGOLOUNGE_CHK)
+		values((select nvl(max(restarea_idx),0)+1 from restarea),#{img},#{name},#{lng},#{lat},#{line_idx},#{do_idx},#{tel},#{carwash_chk},#{repair_chk},#{cargolounge_chk})
+ 	</insert>
+ 	
+ 	<select id="selectNewIdx" parameterType="potato.manager.vo.RestVO" resultType="int">
+ 		select restarea_idx
+ 		from restarea
+ 		where img=#{img} and name=#{name}
+ 	</select>
+ 	
+ 	<insert id="insertFood" parameterType="java.util.List">
+ 		insert all
+ 		<foreach collection="list" item="fVO">
+		into RESTAREA_FOOD(RESTAREA_IDX, FOOD_IDX, MAIN_CHK, REC_CHK, IMG, NAME, PRICE, CONTENTS, INGREDIENT)
+		values(#{fVO.restarea_idx},#{fVO.food_idx},#{fVO.main_chk},#{fVO.rec_chk},#{fVO.img},#{fVO.name},#{fVO.price},#{fVO.contents},#{fVO.ingredient})
+		</foreach>
+		select * from dual
+ 	</insert>
+ 	
+ 	<insert id="insertAmt" parameterType="potato.manager.vo.AmenityVO">
+ 		insert all
+ 		<if test="restIcons != null">
+ 		<foreach collection="restIcons" item="restArr">
+		into RESTAREA_AMENITY(RESTAREA_IDX, AMENITY_TYPE, ICON)
+		values(#{restarea_idx},'A',#{restArr})
+		</foreach>
+		</if>
+		<if test="gasIcons != null">
+		<foreach collection="gasIcons" item="gasArr">
+		into RESTAREA_AMENITY(RESTAREA_IDX, AMENITY_TYPE, ICON)
+		values(#{restarea_idx},'B',#{gasArr})
+		</foreach>
+		</if>
+		select * from dual
+ 	</insert>
+ 	
+ 	<delete id="deleteRest" parameterType="int">
+ 		delete from restarea
+		where restarea_idx = #{idx}
+ 	</delete>
+ 	
+ 	<select id="selectDeleteImg" parameterType="int" resultType="potato.manager.domain.DeleteImgDomain">
+ 		select re.img, listagg(rf.img,',')within group(order by rf.food_idx) foodimg
+		from restarea re, restarea_food rf
+		where  (rf.restarea_idx = re.restarea_idx)  and  re.restarea_idx = #{idx}
+		group by re.img
+ 	</select>
+ 	
+ 	<select id="selectModifyRest" parameterType="int" resultType="potato.manager.domain.RestDomain">
+		select RESTAREA_IDX, IMG, NAME, LNG, LAT, LINE_IDX, DO_IDX, TEL, CARWASH_CHK, REPAIR_CHK, CARGOLOUNGE_CHK,
+
+      	 (  select img
+ 			from( select RESTAREA_IDX,AMENITY_TYPE,listagg(icon,',') within group(order by ICON) img
+			      from restarea_amenity
+				  group by RESTAREA_IDX, AMENITY_TYPE   )
+   			where restarea_idx = #{idx} and AMENITY_TYPE='A' ) retAmImgs,
+
+		 (  select img
+            from( select RESTAREA_IDX,AMENITY_TYPE,listagg(icon,',') within group(order by ICON) img
+			      from restarea_amenity
+			      group by RESTAREA_IDX, AMENITY_TYPE   )
+            where restarea_idx = #{idx} and AMENITY_TYPE='B' ) gasAmImgs
+
+		from restarea
+		where restarea_idx = #{idx} 		
+ 	</select>
+ 	
+ 	<update id="updateRest" parameterType="potato.manager.vo.RestVO">
+ 		update restarea
+ 		<set>
+ 		<if test="img != null">
+ 		img = #{img},
+ 		</if>
+ 		carwash_chk = #{carwash_chk},
+ 		repair_chk = #{repair_chk},
+ 		cargolounge_chk = #{cargolounge_chk},
+ 		name = #{name},
+ 		lat = #{lat},
+ 		lng = #{lng},
+ 		tel = #{tel},
+ 		line_idx = #{line_idx},
+ 		do_idx = #{do_idx}
+ 		</set>
+ 		where restarea_idx = #{restarea_idx} 
+ 	</update>
+ 	
+ 	<select id="selectOldImg" parameterType="int" resultType="String">
+ 		select img
+ 		from restarea
+ 		where restarea_idx = #{idx}
+ 	</select>
+ 	
+ 	<delete id="deleteAmt" parameterType="int">
+ 		delete from RESTAREA_AMENITY
+ 		where restarea_idx = #{idx}
+ 	</delete>
+ 	
+ 	<update id="updateFoodImg" parameterType="potato.manager.vo.FoodVO">
+ 		update restarea_food
+ 		set img = #{img}
+ 		where restarea_idx = #{restarea_idx} and food_idx = #{food_idx}
+ 	</update>
+ 	
+ 	<select id="selectOldFoomImg" parameterType="potato.manager.vo.FoodVO" resultType="String">
+ 		select img
+ 		from restarea_food
+ 		where restarea_idx =#{restarea_idx} and food_idx = #{food_idx}
+ 	</select>
+ 	
+ 	<select id="selectIsFoodIdx" parameterType="potato.manager.vo.FoodVO" resultType="int">
+ 		select count(*)
+		from restarea_food
+		where food_idx=#{food_idx} and restarea_idx = #{restarea_idx}
+ 	</select>
+ 	
+ 	<insert id="insertNewFoodImg" parameterType="potato.manager.vo.FoodVO">
+ 		insert into restarea_food(restarea_idx,food_idx,img)
+ 		values(#{restarea_idx},#{food_idx},#{img})
+ 	</insert>
+ 	
+ 	<delete id="deleteFood" parameterType="potato.manager.vo.FoodVO">
+ 		delete from restarea_food
+ 		where restarea_idx = #{restarea_idx} and food_idx = #{food_idx}
+ 	</delete>
+ 	
+ 	<update id="updateFoodInfo" parameterType="potato.manager.vo.FoodVO">
+ 		update restarea_food
+ 		set name=#{name}, price=#{price}, contents=#{contents}, ingredient=#{ingredient}, main_chk=#{main_chk}, rec_chk=#{rec_chk}
+ 		where restarea_idx = #{restarea_idx} and food_idx = #{food_idx}
+ 	</update>
+ 	
+	<insert id="insertNewFoodInfo" parameterType="potato.manager.vo.FoodVO">
+		insert into restarea_food(restarea_idx, food_idx, name, price, contents, ingredient, main_chk, rec_chk)
+		values(#{restarea_idx},#{food_idx},#{name},#{price},#{contents},#{ingredient},#{main_chk},#{rec_chk})
+	</insert> 	
+ 	
+</mapper>

@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+.container{
+	background-color: #ECE3D9;
+	
+}
+.my_page_wrap{
+	height:700px;
+	margin: 0px auto;
+	display: flex;
+	flex-direction: column
+}
+
+.lock_img{
+	color:#593000;
+	margin: 0px auto;
+	text-align: center;
+	margin-top: 150px;
+}
+.msg{
+	text-align: center;
+	font-size: 30px;
+	font-weight:bold;
+	color:#404040;
+	padding-top: 30px;
+}
+.pw_chk{
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	
+}
+.pw{
+	 height: 40px;
+	 border: 0px;
+	 border-radius: 10px;
+	 margin-right: 15px;
+	 padding-left: 10px;
+}
+.pw_chk_btn{
+	border:0px;
+	border-radius:10px;
+	background-color: #593000;
+	height: 40px;
+	width: 50px;
+	color: white;
+	font-weight:bold;
+	cursor: pointer;
+}
+.mainLink{
+	margin: 0px auto;
+	display: block;
+	color: black;
+}

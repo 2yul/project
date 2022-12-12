@@ -1,0 +1,218 @@
+@charset "UTF-8";
+
+.container {
+	background: #FFF !important;
+}
+
+a {
+	text-decoration: none;
+}
+
+.content {
+	width: 100%;
+	margin: 0px auto;
+	max-width: 1280px;
+	min-width: 1280px;
+	padding: 50px;
+	background-color: #FDFAF6;
+	padding-top: 40px;
+	display: flex;
+	flex-direction: column;
+}
+
+.content-head-title {
+	font-size: 32px;
+	font-weight: 600;
+	letter-spacing: -0.6px;
+	text-align: center;
+	color: #212529;
+	margin-bottom: 40px;
+}
+
+.content-wrap {
+	display: flex;
+}
+
+
+/* 카테고리 영역 */
+.main {
+    display: block;
+    margin: 0px auto;
+    width: 1300px;
+    margin-top: 30px;
+}
+
+.cat-name {
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 1px solid #666666;
+    padding: 15px 0;
+}
+
+.array{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn{
+	font-size: 16px;
+	border: 0px;
+    width: 90px;
+    height: 35px;
+    margin: 5px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn:hover{
+	font-weight: bold;
+}
+
+.v-line {
+	border-left: thin solid #666666;
+    height: 25px;
+    margin-top: 10px;
+}
+
+.content-list {
+	width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	padding: 21px 0 25px;
+}
+
+.card {
+    border: 1px solid transparent;
+    width: 300px;
+    margin-bottom: 56px;
+    padding: 10px;
+    border-radius: 17px;
+    transition-duration: 0.3s;
+}
+
+.card:hover {
+    border: 1px solid transparent;
+    width: 300px;
+    margin-bottom: 56px;
+    padding: 10px;
+    background-color: #FDF9F0;
+	box-shadow: -5px -5px 9px rgb(255 255 255), 5px 5px 9px rgb(238	218 185 / 30%);
+    border-radius: 17px;
+    transition-duration: 0.3s;
+}
+
+.card:active {
+    border: 1px solid transparent;
+    width: 300px;
+    margin-bottom: 56px;
+    padding: 10px;
+    background-color: #FDF9F0;
+    margin-left:1px;
+    margin-top:1px;
+	box-shadow: inset -5px -5px 9px rgb(255 255 255), inset 5px 5px 9px rgb(238 218 185 / 30%);
+    border-radius: 17px;
+    transition-duration: 0.3s;
+}
+
+.card-photo {
+	width: 100%;
+	padding-top: 100%;
+	position: relative;
+	overflow: hidden;
+	border-radius: 12px;
+	background-color: #F8F9FA;
+	box-shadow: inset 0px 0px 0px 1px rgb(0 0 0 / 15%);
+	box-sizing: border-box;
+}
+
+.card-photo img {
+	box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    border-radius: 12px;
+    border: 1px solid transparent;
+}
+
+.card-link {
+	text-decoration: none;
+	color: #212529;
+}
+
+.card-name {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+.card-star {
+	color: #000;
+}
+
+.card-star-text {
+    margin: 0 10px;
+    font-size: 19px;
+}
+
+.card-addr {
+	font-size: 15px;
+    margin: 5px 0;
+}
+
+.noResult {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.noResult>svg{
+	width: 120px;
+    height: 120px;
+    fill: #bebebe;
+    margin-bottom: 25px;
+}
+
+.noResult>span{
+	font-size: 20px;
+	color: #bebebe;
+	
+}
+
+
+
+/* 페이지 */
+.page{
+	display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.page-num{
+	font-size: 16px;
+    color: #000;
+	background-color: #F4F4F4;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 12px;
+}
+.page-num:hover{
+    color: #FFF;
+    background-color: #C89E6C;
+
+}
+
+.page-num-click{
+	font-size: 16px;
+    color: #000;
+	background-color: #C89E6C;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 12px;
+}

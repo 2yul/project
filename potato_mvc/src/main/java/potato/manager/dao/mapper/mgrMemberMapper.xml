@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="potato.manager.mgrMemberMapper">
+	<!-- 전체회원 목록 조회 -->
+<select id="memberList" resultType="potato.manager.domain.MgrMemberDomain" parameterType="potato.manager.vo.MgrMemberVO">
+	select id,nick,join_date,birth
+	from member
+	where quit='N'
+	<if test="searchWord != null and searchWord != ''">
+       and id like '%'||#{searchWord}||'%'
+    </if> 
+    	offset (#{pageFlag}-1)*10 rows
+		fetch next 10 rows only
+</select>
+
+<!-- 탈퇴회원 목록 조회 -->
+<select id="quitMemberList" resultType="potato.manager.domain.MgrMemberDomain" parameterType="potato.manager.vo.MgrMemberVO">
+	select id,nick,join_date,quit_date
+	from member
+	where quit='Y'
+	<if test="searchWord != null and searchWord != ''">
+       and id like '%'||#{searchWord}||'%'
+    </if> 
+    	offset (#{pageFlag}-1)*10 rows
+		fetch next 10 rows only
+</select>
+
+<!-- 차단회원 목록 조회 -->
+<select id="blockMemberList" resultType="potato.manager.domain.MgrMemberDomain" parameterType="potato.manager.vo.MgrMemberVO">
+	select mb.id,m.nick,br.reason
+	from member m,manager_block mb,block_reason br
+	where 
+	(m.id=mb.id and br.block_idx=mb.block_idx)
+	<if test="id != null and id != ''">
+		and mb.id like '%'||#{searchWord}||'%'
+	</if>
+		offset (#{pageFlag}-1)*10 rows
+		fetch next 10 rows only
+</select>
+
+
+<!-- 회원 상세 정보 팝업창 -->
+<select id="infoPopup" resultType="potato.manager.domain.MgrMemberDomain" parameterType="String">
+	select id,nick,birth,phone,email,join_date
+	from member
+	where id=#{id}
+</select> 
+
+<!-- 차단팝업창 불러오기 -->
+<select id="blockReason" resultType="potato.manager.domain.MgrBlockReasonDomain">
+	select block_idx,reason
+	from block_reason
+</select> 
+
+<!-- 회원 차단 -->
+<insert id="blockMember" parameterType="potato.manager.vo.ManagerBlockVO">
+	insert into manager_block(id,block_idx,block_date)
+	values(#{id},#{block_idx},sysdate)
+</insert>
+
+<!-- 차단 해제 -->
+<delete id="unblock" parameterType="String">
+	delete from manager_block
+	where id=#{id}
+</delete>
+
+<!-- 전체 사용자 목록 페이징 -->
+<select id="selectTotalPages1" parameterType="potato.manager.vo.MgrMemberVO" resultType="int">
+	select count(*) cnt
+	from member 
+	where quit='N'
+	<if test="searchWord != null and searchWord != ''">
+       and id like '%'||#{searchWord}||'%'
+    </if> 
+</select>
+
+<!-- 탈퇴 회원 목록페이징 -->
+<select id="selectTotalPages2" parameterType="potato.manager.vo.MgrMemberVO" resultType="int">
+	select count(*) cnt
+	from member 
+	where quit='Y'
+	<if test="searchWord != null and searchWord != ''">
+       and id like '%'||#{searchWord}||'%'
+    </if> 
+</select>
+
+<!-- 차단 회원 목록페이징 -->
+<select id="selectTotalPages3" parameterType="potato.manager.vo.MgrMemberVO" resultType="int">
+	select count(*) cnt
+	from manager_block 
+	<if test="searchWord != null and searchWord != ''">
+       and id like '%'||#{searchWord}||'%'
+    </if> 
+</select>
+
+
+</mapper>

@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+html {
+	overflow: hidden;
+}
+
+/* 제목 */
+.wrap {
+	width: 539px;
+}
+
+.title {
+    text-align: center;
+    border-bottom: 1px solid #e6e6e6;
+	font-size: 25px;
+	padding: 14px;
+	background-color: #E4CEB7;
+	color: #282828;
+}
+
+/* 회원 정보 */
+.info-wrap {
+	width: 539px;
+	display: flex;
+    flex-direction: column;
+	margin: 20px 20px 20px;
+}
+
+.info {
+	margin-bottom: 14px;
+}
+
+.info > label {
+	width: 106px;
+	display: inline-block;
+	font-size: 16px;
+}
+
+
+input[type=text], input[type=date] {
+	width: 200px;
+	height: 30px;
+	font-size: 15px;
+	border: 1px solid #D0D7D9;
+	border-radius: 5px;
+}
+
+/* 닫기 버튼 */
+.infoBtn{
+	margin: 0 auto;
+}
+
+.closeBtn {
+	background-color: #C89E6C;
+	color: #FFFFFF;
+	border: 1px;
+	border-radius: 10px;
+	padding: 13px 60px;
+	font-size: 15px;
+}
+

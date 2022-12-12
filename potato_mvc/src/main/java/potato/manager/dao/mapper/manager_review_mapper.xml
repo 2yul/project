@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="potato.manager.review">
+	
+	<select id="selectReview" parameterType="potato.manager.vo.SearchReviewVO" resultType="potato.manager.domain.ReviewDomain">
+		select re.review_idx, re.restarea_idx, ra.name, re.contents, re.rating, re.id, re.post_date, (select count(ID_REPORTER) from report where REVIEW_IDX = re.REVIEW_IDX and ID_WRITER=re.ID and RESTAREA_IDX = re.RESTAREA_IDX  ) report_cnt
+		from review re, restarea ra
+		
+		<where>
+		(re.restarea_idx = ra.restarea_idx) and 1=1
+		<if test="keyword != null and keyword != ''">
+		<if test="searchType != null">
+		and ${searchType} like '%'||#{keyword}||'%'
+		</if>
+		</if>
+		</where>
+		
+		<if test="dateOrderFlag eq 1">
+		order by re.post_date desc
+		</if>
+		<if test="dateOrderFlag eq 2">
+		order by re.post_date 
+		</if>
+		
+		<if test="reportOrderFlag eq 1">
+		order by report_cnt desc
+		</if>
+		<if test="reportOrderFlag eq 2">
+		order by report_cnt 
+		</if>
+		
+		offset (#{pageFlag}-1)*10 rows
+		fetch next 10 rows only
+	</select>
+	
+	<select id="selectTotalReview" parameterType="potato.manager.vo.SearchReviewVO" resultType="int">
+		select count(*) cnt
+		from review re, restarea ra
+		
+		<where>
+		(re.restarea_idx = ra.restarea_idx) and 1=1
+		<if test="keyword != null and keyword != ''">
+		<if test="searchType != null">
+		and ${searchType} like '%'||#{keyword}||'%'
+		</if>
+		</if>
+		</where>	
+	</select>
+	
+	<select id="selectKeywordAJAX" parameterType="String" resultType="String">
+		select name
+		from restarea
+		where name like '%'||#{keyword}||'%'
+	</select>
+	
+	<delete id="deleteMultipleReviews" parameterType="java.util.List" >
+		delete from review
+		<where>
+		1=2  
+		<foreach collection="list" item="rVO">
+		or ( review_idx=#{rVO.review_idx} and id=#{rVO.id} and restarea_idx= #{rVO.restarea_idx} )
+		</foreach>
+		</where>
+	</delete>
+	
+	<delete id="deleteSingleReview" parameterType="potato.manager.vo.ReviewVO" >
+		delete from review
+		where  review_idx=#{review_idx} and id=#{id} and restarea_idx= #{restarea_idx} 
+	</delete>
+	
+	<select id="selectReviewDetail" parameterType="potato.manager.vo.ReviewVO" resultType="potato.manager.domain.ReviewDomain">
+		select name, img profilImg, nick, rating, contents, reviewimg, post_date, (select count(*) from liked where review_idx = #{review_idx} and id_writer=#{id} and restarea_idx= #{restarea_idx}) like_cnt
+		from
+	      ( 
+	        select re.contents, re.id, listagg(rimg.img,',') within group(order by rimg.img_idx) reviewimg, me.nick, re.rating, ra.name, me.img, re.post_date
+			from review re, review_img rimg, member me, restarea ra
+			where (rimg.review_idx(+) = re.review_idx and rimg.restarea_idx(+) = re.restarea_idx and rimg.id(+) = re.id and re.id(+) = me.id and re.restarea_idx(+) = ra.restarea_idx) 
+			      and (re.restarea_idx = #{restarea_idx} and re.review_idx = #{review_idx} and re.id = #{id})
+			group by re.contents, re.id, me.nick, re.rating, ra.name, me.img, re.post_date
+	      )
+	</select>
+	
+</mapper>

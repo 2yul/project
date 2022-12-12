@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+/* .navi-wrap {
+    width: 1920px;
+    height: 80px;
+    background: #dcc1a0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navi-left {
+	width: 500px;
+    margin-left: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navi-right {
+	width: 500px;
+    display: flex;
+    margin-right: 200px;
+    justify-content: space-between;
+}
+
+.navi-wrap > div > a {
+	font-size: 27px;
+	font-weight: bold;
+	color: #593000;
+} */
+
+.wrap-navi {
+	margin: 0 auto;
+	height: 80px;
+	background-color: #dcc1a0;
+}
+
+.navi {
+	display: flex;
+	flex-grow: 0;
+	overflow-y: visible;
+	background-color: transparent
+}
+
+.navibar {
+	display: flex;
+	padding-left: 0;
+	list-style: none;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.navi-link {
+	font-weight: bold;
+	font-size: 25px;
+	color: #593000 !important;
+	margin: 0 !important;
+}
+
+.navibar > li {
+	float: left;
+	width: 300px;
+	height: 80px;
+	position: relative;
+	line-height: 75px;
+}
+
+.sub-navibar {
+	position: absolute;
+	top: 100%;
+	left: 50px;
+	display: none;
+	background: #dcc1a0;
+}
+
+.sub-navibar > li {
+	width: 200px;
+}
+
+.navi-link:hover {
+	height: 100%;
+	border-bottom: 3px solid #fdeedc;
+}
+
+.navi-item:hover .sub-navibar {
+	display: block;
+}
+
+
+.subnavi-link {
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 1.8;
+	color: #593000 !important;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.subnavi-link:hover {
+	height: 100%;
+	width: 200px;
+	border-bottom: 3px solid #fdeedc;
+}

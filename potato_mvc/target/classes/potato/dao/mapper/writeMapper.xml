@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="potato.writeMapper">
+
+<!-- 리뷰등록 -->
+<insert id="insReview" parameterType="potato.vo.WriteReviewVO">
+insert into review(review_idx, id, restarea_idx, rating, contents)
+values ((select nvl(max(review_idx),0)+1 from review where restarea_idx=#{restarea_idx}), #{id}, #{restarea_idx}, #{rating}, #{contents})
+</insert>
+
+<select id="selNewReview" parameterType="int" resultType="int">
+select max(review_idx) review_idx
+from review
+where restarea_idx=#{restarea_idx}
+</select>
+
+<!-- 리뷰수정등록 -->
+<update id="upReReview" parameterType="potato.vo.WriteReviewVO">
+update review
+set rating=#{rating}, contents=#{contents}
+where restarea_idx=#{restarea_idx} and  review_idx=#{review_idx}
+</update>
+
+<!-- 이미지 전부 삭제  -->
+<delete id="delReReviewImg" parameterType="potato.vo.WriteReviewVO">
+delete from review_img
+where review_idx=#{review_idx} and restarea_idx=#{restarea_idx}
+</delete>
+
+<!-- 리뷰 이미지 등록 -->
+<insert id="upReReviewImg" parameterType="potato.vo.WriteReviewImgVO">
+insert into review_img(review_idx, id, restarea_idx, img_idx, img)
+values (#{review_idx}, #{id}, #{restarea_idx}, ${img_idx} , #{img})
+</insert>
+
+</mapper>

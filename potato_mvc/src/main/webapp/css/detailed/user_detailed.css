@@ -1,0 +1,611 @@
+@charset "UTF-8";
+
+.container {
+	background: #fff !important;
+}
+
+.title-wrap {
+    width: 1600px;
+    margin: 0 auto;
+    margin-top: 150px;
+    display: flex;
+    align-items: flex-end; 
+}
+
+.title-wrap > span {
+    font-size: 2.8em;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-right: 5px;
+}
+
+.rate-wrap {
+	display: flex;
+    flex-direction: row;
+}
+
+.star-rate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.star-blank {
+	width: 100px;
+	background-color: bebebe;
+}
+
+.star-blank {
+	display: inline-block;
+	height: 20px;
+	overflow: hidden;
+	background: url(../images/starblank.png);
+	background-size: 20px;
+	position: relative;
+}
+
+.star-wrap {
+	position: absolute;
+    width: 100px;
+    height: 20px;
+}
+
+.star {
+	display: inline-block;
+	height: 20px;
+	overflow: hidden;
+	background: url(../images/star.png);
+	background-size: 20px;
+	background-position: left bottom;
+}
+
+.rate-txt {
+	color: #f1c40f;
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.bookmark-wrap {
+	display: flex;
+    align-items: center;
+}
+
+.bookmark-wrap > div {
+    background: #c89e6c;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;	
+}
+
+.bookmark-wrap > div > svg {
+	fill: #fff;
+    width: 11px;
+    height: 11px;
+    stroke: aliceblue;
+}
+
+.bookmark-txt {	
+	color: #c89e6c;
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.slide-wrap {
+	display: flex;
+    align-items: center;
+    flex-direction: row;
+    background: #000;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.swiper {
+	background: #000;
+}
+
+.swiper-wrapper {
+	width: 1600px;
+    margin: 0 auto;
+    height: 400px;
+}
+
+.swiper-slide {
+	width: 400px !important;
+}
+
+.foodimg {
+	width: 400px;
+	height: 400px;   
+	border-left: 1px solid #000;                                                 
+	border-right: 1px solid #000;                                                 
+}
+
+.slide-img-title {
+    display: flex;
+    position: absolute;
+    width: 60px;
+    right: 0px;
+    height: 30px;
+    color: #fff;
+    line-height: 30px;
+    text-align: center;
+    background: #000;
+    top: 0px;
+    align-items: center;
+    justify-content: center;
+}
+
+.bi-star-fill {
+	width: 15px;
+	height: 15px;
+}
+
+.food-detailed-wrap {
+    width: 400px;
+    height: 400px;
+    background: rgba(0,0,0,.8);
+    position: absolute;
+    top: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+    flex-direction: column;
+    word-break: keep-all;
+}
+
+.swiper-slide:hover .food-detailed-wrap {
+	display: flex;
+}
+
+.food-name {
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.food-price {
+    font-size: 28px;
+    background: #fff;
+    color: #000;
+    width: 120px;
+    text-align: center;
+    border-radius: 30px;
+    margin-bottom: 30px;	
+}
+
+.food-feature {
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    width: 350px;
+    margin-bottom: 10px;	
+}
+
+.food-ingredient {
+    font-size: 18px;
+    font-weight: bold;
+    width: 350px;
+    text-align: center;	
+}
+
+.map-bookmark {
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+
+.map-wrap {
+	width: 950px;
+}
+
+.map-wrap > span {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;	
+}
+
+.kk-map {
+	width: 950px;
+	height: 300px;
+    margin-top: 10px;
+}
+
+.bookmark-review-wrap {
+    width: 400px;
+    height: 300px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bookmark-icon-btn {
+    margin-top: 15px;
+    background: #f4f4f4;
+    border: 10px solid #f4f4f4;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: -10px -10px 15px rgb(255 255 255 / 50%), 0px 10px 15px rgb(70 70 70 / 20%);
+}
+
+.bi-bookmark {
+    width: 40px;
+    height: 40px;
+    stroke: #fff;
+    fill: #fff;
+}
+
+.bibtn-add {
+    margin-top: 15px;
+    background: #f4f4f4;
+    border: 10px solid #C89E6C;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: -10px -10px 15px rgb(255 255 255 / 50%), 10px 10px 15px rgb(70 70 70 / 12%), inset -10px -10px 15px rgb(255 255 255 / 50%), inset 10px 10px 15px rgb(70 70 70 / 12%);
+}
+
+.bb-add {
+    width: 40px;
+    height: 40px;
+    stroke: #C89E6C;
+    fill: #C89E6C;	
+}
+
+.bookmark-review-wrap > span {
+	margin-top: 20px;
+    font-size: 20px;
+}
+
+.bookmark-review-wrap > div {
+	margin-top: 40px;	
+}
+
+.review-link {
+    font-size: 20px;
+    background: #C89E6C;
+    color: #fff;
+    padding-right: 145px;
+    padding-left: 145px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.amenities-icon-wrap {
+	width: 1400px;
+    height: 150px;
+    margin: 0 auto;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.amenities-icon-wrap > span {
+    font-size: 22px;
+    width: 1300px;
+    margin: 0 auto;	
+}
+
+.amenities-icon {
+    display: flex;
+    align-items: center;	
+}
+
+.icon-wrap {
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 1300px;
+    margin: 0 auto;
+    margin-top: 20px;	
+}
+
+.amenities-icon > img {
+	width: 35px;
+	height: 35px;
+	margin-right: 10px;
+}
+
+.amenities-icon > span {
+	font-size: 20px;	
+}
+
+.amenities-table-wrap {
+	margin: 0 auto;
+	width: 1400px;
+	margin-bottom: 100px;
+}
+
+.amenities-table {
+    width: 1400px;
+    border: 1px solid #e0e0e0;
+    height: 200px;
+    text-align: center;
+	font-size: 16px;
+}
+
+th, td {
+	width: 350px;
+    height: 100%;
+    border: 1px solid #bebebe;
+    line-height: 50px;	
+}
+
+th {
+	font-weight: bold;
+    background: #e0e0e0;
+}
+
+td {
+    vertical-align: middle;
+}
+
+.table-icon-wrap {
+    height: 35px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+td > div > img {
+	width: 35px;
+	height: 35px;
+	margin: 10px;
+}
+
+.review-wrap {
+	width: 1400px;
+    margin: 0 auto;
+}
+
+.review-txt {
+	display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.review-txt > div > span:last-child {
+	color: #593000;
+}
+
+.review-filter {
+    border-top: 2px solid #333333;
+    border-bottom: 1px solid #333333;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+}
+
+.review-filter div {
+	width: 700px;
+    text-align: center;
+}
+
+.review-filter div a {
+    display: block;
+    color: #333333;
+    font-size: 15px;
+}
+
+.review-filter div:first-child a {
+	border-right: 1px solid #333333;
+}
+
+.no-review {
+	width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;	
+}
+
+.no-review > svg {
+    width: 100px;
+    height: 100px;
+    fill: #bebebe;
+    margin-bottom: 15px;	
+}
+
+.no-review > span {
+	font-size: 20px;	
+	color: #bebebe;
+}
+
+.review-exist {
+	width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 40px;
+    border-bottom: 1px solid #333333;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+
+}
+
+.re-left > a > img {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	margin-right: 20px;
+}
+
+.re-star-wrap {
+	position: absolute;
+    width: 100px;
+    height: 20px;
+}
+
+.re-right > a {
+	font-size: 17px;
+    font-weight: bold;
+    color: #000;	
+}
+
+.re-txt {
+    margin-top: 10px;
+    line-height: 1.5;
+    font-size: 15px;
+    max-width: 1200px;	
+    white-space: break-spaces;
+}
+
+.re-slider {
+    display: flex;
+    align-items: center;
+    width: 1200px;
+}
+
+.re-mySwiper {
+	width: 1150px;
+    background: transparent;
+    margin-top: 10px;
+}
+
+.re-swiper-wrapper{
+	width: 1150px;
+    margin: 0 auto;
+    height: 200px;
+}
+
+.re-swiper-slide {
+	width: 285.5px !important;
+}
+
+.re-foodimg {
+	width: 285.5px;
+	height: 200px;
+}
+
+.re-swiper-button-prev {
+	left: 00px;
+    right: auto;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+}
+
+.re-swiper-button-next {
+    right: 0px;
+    left: auto;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;	
+}
+
+.etc-icon-wrap {
+	margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 1200px;
+    margin-bottom: 10px;
+}
+
+.etc-icon {
+	display: flex;
+}
+
+.heart-icon-wrap, .report-icon, .edit-icon, .delete-icon {
+	display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.heart-btn, .report-btn, .edit-link, .delete-btn {
+	display: flex;
+	background: transparent;
+	color: #333333;
+	margin-right: 5px;
+}
+
+.heart-icon-wrap > span, .report-icon > span, .edit-icon > span, .delete-icon > span {
+	font-size: 15px;
+}
+
+.heart-btn:hover {
+	animation-duration: 2s;
+	animation-name: heart;
+	animation-iteration-count: infinite;
+}
+
+@keyframes heart {
+	0% {transform: scale(1.2);}
+	10% {transform: scale(0.9);}
+	20% {transform: scale(1.2);}
+	30% {transform: scale(0.9);}
+	40% {transform: scale(1.2);}
+	50% {transform: scale(0.9);}
+	60% {transform: scale(1.2);}
+	70% {transform: scale(0.9);}
+	80% {transform: scale(1.2);}
+	90% {transform: scale(0.9);}
+	100% {transform: scale(1.2);}
+}
+
+.hb-fill {
+	color: red;
+}
+
+.bi-bell-fill:hover {
+	animation-duration: 2s;
+	animation-name: bell;
+	animation-iteration-count: infinite;	
+	color: #ffca2b;
+}
+
+@keyframes bell {
+	0%, 50% {transform: rotate(0deg);}
+	5%, 15%, 25%, 35%, 45%  {transform: rotate(13deg);}
+	10%, 20%, 30%, 40% {transform: rotate(-13deg);}
+}
+
+.date {
+	font-size: 15px;
+	margin-right: 10px;
+}
+
+.review-more-wrap{
+    width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;	
+}
+
+.more-btn {
+display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    font-size: 20px;	
+}

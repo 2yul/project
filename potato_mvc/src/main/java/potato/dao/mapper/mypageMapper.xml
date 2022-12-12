@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="potato.mypageMapper">
+  	<!-- 마이페이지 -->
+  	<select id="selectMyLogin"   resultType="int" parameterType="potato.vo.LoginVO">
+  		select  	(count)id
+		from    	member
+		where 	id= #{ id, jdbcType=VARCHAR  } and pass= #{ pass, jdbcType=NUMERIC }
+  	</select>
+  
+  	<!-- 내 정보 조회 -->
+  	<select id="selectMypageInfo" resultType="potato.domain.MyPageMyInfoDomain" parameterType="String" >
+  		select		img, name, nick, id, phone, email, birth
+  		from		member				
+  		where		id =#{ id, jdbcType=VARCHAR }
+  	</select>
+  	
+  	<!--  내 정보 수정 -->
+  	<select id="updateMypageInfo"  resultType="int" parameterType="potato.vo.MyPageMyInfoEditVO">
+  		update		member
+		set       		img =#{ img, jdbcType=VARCHAR }, email=#{ email, jdbcType=VARCHAR },phone=#{ phone, jdbcType=VARCHAR },birth=#{birth, jdbcType=VARCHAR }
+		where     	id= #{ id , jdbcType=VARCHAR}
+  	</select>
+  	
+  	<!--  비밀번호 수정 -->
+  	<select id="updatePw" parameterType="potato.vo.MyPagePwEditVO">
+  		update		member
+		set       		pass=#{new_pw, jdbcType=VARCHAR }
+		where     	id= #{ id, jdbcType=VARCHAR } and  pass= #{ pass , jdbcType=VARCHAR }
+  	</select>
+  	
+  	<!--  회원 탈퇴 -->
+  	<select id="updateQuit" parameterType="potato.vo.MyPageQuitVO">
+  		update			member
+		set       			quit='Y',quit_date=sysdate
+		where    	 	id=#{id} and pass=#{pass}
+  	</select>
+  	
+  	<!-- 북마크한 휴게소 조회 -->
+  	<select id="selectBookmark" resultType="potato.domain.MyPageBookmarkDomain" parameterType="String"  >
+  		select		b.id, r.name , r.restarea_idx 
+		from    	bookmark b, restarea r
+		where   	b.restarea_idx=r.restarea_idx and b.id in #{ id, jdbcType=VARCHAR }
+  	</select>
+  	
+  	<!-- 북마크한 휴게소 삭제(아이디, 휴게소 인덱스) -->
+  	<select id="updateBookmark" parameterType="potato.vo.MyPageBookmarkVO">
+  	delete
+	from     	bookmark
+	where    	restarea_idx = #{ restarea_idx }  and id=#{ id }
+  	</select>
+  </mapper>

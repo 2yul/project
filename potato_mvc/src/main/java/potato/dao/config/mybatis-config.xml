@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="properties/database.properties">
+	</properties>
+	<typeAliases>
+		<typeAlias type="potato.vo.LoginVO" alias="lVO"/>
+		<typeAlias type="potato.vo.UserInfoVO" alias="uiVO"/>
+		<typeAlias type="potato.vo.ForgotIdVO" alias="fiVO"/>
+		<typeAlias type="potato.vo.ForgotPwVO" alias="fpVO"/>
+		<typeAlias type="potato.vo.ManagerLoginVO" alias="mlVO"/>
+		<typeAlias type="potato.domain.UserDomain" alias="ud"/>
+	</typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+	<mapper resource="potato/dao/mapper/userMapper.xml"/>
+	<mapper resource="potato/dao/mapper/homeMapper.xml"/>
+	<mapper resource="potato/dao/mapper/detailedMapper.xml"/>
+	<mapper resource="potato/dao/mapper/writeMapper.xml"/>
+    <mapper resource="potato/dao/mapper/mypageMapper.xml"/>
+   	<mapper resource="potato/dao/mapper/userReviewMapper.xml"/>
+   	<mapper resource="potato/dao/mapper/otherReviewMapper.xml"/>
+   	<mapper resource="potato/dao/mapper/listMapper.xml"/>
+    <mapper resource="potato/manager/dao/mapper/mgrHomeMapper.xml"/>
+	<mapper resource="potato/manager/dao/mapper/mgrMemberMapper.xml"/>
+	<mapper resource="potato/manager/dao/mapper/mgrPassChangeMapper.xml"/>
+	<mapper resource="potato/manager/dao/mapper/manager_restarea_mapper.xml"/>
+    <mapper resource="potato/manager/dao/mapper/manager_review_mapper.xml"/>
+  </mappers>
+</configuration>

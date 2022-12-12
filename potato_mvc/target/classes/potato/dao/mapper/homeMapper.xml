@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="potato.homeMapper">
+
+<!-- 전라남도 슬라이드 (보성녹차휴게소 중복 제외) -->
+<select id="selectSlide1" resultType="potato.domain.UserHomeSliderDomain">
+	select r.restarea_idx, substr(r.name,1, instr(r.name,'휴게소')-1) name, rf.img, rf.name foodname
+	from restarea r, restarea_food rf
+	where r.restarea_idx=rf.restarea_idx and do_idx=8 and main_chk='Y' and not r.restarea_idx=12 and rownum&lt;=3
+</select>
+
+<!-- 수도권 슬라이드 -->
+<select id="selectSlide2" resultType="potato.domain.UserHomeSliderDomain">
+	select r.restarea_idx, substr(r.name,1, instr(r.name,'휴게소')-1) name, rf.img, rf.name foodname
+	from restarea r, restarea_food rf
+	where r.restarea_idx=rf.restarea_idx and do_idx=1 and main_chk='Y' and rownum&lt;=3
+</select>
+
+<!-- 강원도 슬라이드 -->
+<select id="selectSlide3" resultType="potato.domain.UserHomeSliderDomain">
+	select r.restarea_idx, substr(r.name,1, instr(r.name,'휴게소')-1) name, rf.img, rf.name foodname
+	from restarea r, restarea_food rf
+	where r.restarea_idx=rf.restarea_idx and do_idx=2 and main_chk='Y' and rownum&lt;=3
+</select>
+
+<!-- 충청북도 슬라이드 -->
+<select id="selectSlide4" resultType="potato.domain.UserHomeSliderDomain">
+	select r.restarea_idx, substr(r.name,1, instr(r.name,'휴게소')-1) name, rf.img, rf.name foodname
+	from restarea r, restarea_food rf
+	where r.restarea_idx=rf.restarea_idx and do_idx=3 and main_chk='Y' and rownum&lt;=3
+</select>
+
+<!-- 지도 핀 -->
+<select id="selectMapPin" resultType="potato.domain.UserHomeMapDomain">
+	select restarea_idx, name, lng, lat
+	from restarea
+</select>
+
+<!-- 방문자수집계 -->
+<insert id="insertVisitor" parameterType="String">
+	insert into visitor(ip)
+	values (#{ip})
+</insert>
+
+</mapper>

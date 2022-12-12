@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.container {
+	background: #FFF !important;
+}
+
+a {
+	text-decoration: none;
+}
+
+/* 카테고리 영역 */
+.main {
+	display: block;
+	margin: 0px auto;
+	width: 1200px;
+	margin-top: 30px;
+}
+
+.cat-name {
+	font-size: 30px;
+	font-weight: bold;
+	border-bottom: 1px solid #666666;
+	padding: 15px 0;
+}
+
+.effect:hover{
+   filter: brightness(1);
+}

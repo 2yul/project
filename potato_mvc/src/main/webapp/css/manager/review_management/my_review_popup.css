@@ -1,0 +1,287 @@
+@charset "UTF-8";
+
+.container {
+	background: #fff !important;
+}
+
+.mainWrap{
+	display:flex;
+	flex-direction: column;
+}
+
+
+.rate-wrap {
+	display: flex;
+    flex-direction: row;
+}
+
+.star-rate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.star-blank {
+	width: 100px;
+	background-color: bebebe;
+}
+
+.star-blank {
+	display: inline-block;
+	height: 20px;
+	overflow: hidden;
+	background: url(../../images/starblank.png);
+	background-size: 20px;
+	position: relative;
+}
+
+.star-wrap {
+	position: absolute;
+    width: 100px;
+    height: 20px;
+}
+
+.star {
+	display: inline-block;
+	height: 20px;
+	overflow: hidden;
+	background: url(../../images/star.png);
+	background-size: 20px;
+	background-position: left bottom;
+}
+
+.rate-txt {
+	color: #f1c40f;
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+
+
+td > div > img {
+	width: 35px;
+	height: 35px;
+	margin: 10px;
+}
+
+.review-wrap {
+	width: 1400px;
+    margin: 0 auto;
+    border-bottom:2px solid black;
+}
+
+.reviewDiv {
+	width: 1200px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewDiv > div {
+    width: 260px;	
+}
+
+.review-txt {
+	display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.review-txt > div > span:last-child {
+	color: #593000;
+}
+
+.review-filter {
+    border-top: 2px solid #333333;
+    border-bottom: 1px solid #333333;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+}
+
+.review-filter div {
+	width: 700px;
+    text-align: center;
+}
+
+.review-filter div a {
+    display: block;
+    color: #333333;
+    font-size: 15px;
+}
+
+.review-filter div:first-child a {
+	border-right: 1px solid #333333;
+}
+
+.no-review {
+	width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;	
+}
+
+.no-review > svg {
+    width: 100px;
+    height: 100px;
+    fill: #bebebe;
+    margin-bottom: 15px;	
+}
+
+.no-review > span {
+	font-size: 20px;	
+	color: #bebebe;
+}
+
+.review-exist {
+	width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 40px;
+    border-bottom: 1px solid #333333;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+
+}
+
+.re-left > img {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	margin-right: 20px;
+}
+
+.re-star-wrap {
+	position: absolute;
+    width: 100px;
+    height: 20px;
+}
+
+.re-right > span {
+	font-size: 17px;
+    font-weight: bold;	
+}
+
+.re-txt {
+	margin-top: 10px;
+    line-height: 1.5;	
+}
+
+.re-slider {
+    display: flex;
+    align-items: center;
+    width: 1200px;
+}
+
+.re-mySwiper {
+	width: 1150px;
+    background: transparent;
+    margin-top: 10px;
+}
+
+.re-swiper-wrapper{
+	width: 1150px;
+    margin: 0 auto;
+    height: 200px;
+}
+
+.re-swiper-slide {
+	width: 285.5px !important;
+}
+
+.re-foodimg {
+	width: 285.5px;
+	height: 200px;
+}
+
+.re-swiper-button-prev {
+	left: 00px;
+    right: auto;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+}
+
+.re-swiper-button-next {
+    right: 0px;
+    left: auto;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;	
+}
+
+.etc-icon-wrap {
+	margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 1200px;
+    margin-bottom: 10px;
+}
+
+.etc-icon {
+	display: flex;
+}
+
+.heart-icon-wrap, .report-icon, .edit-icon, .delete-icon {
+	display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.heart-btn, .report-btn, .edit-link, .delete-btn {
+	display: flex;
+	background: transparent;
+	color: #333333;
+	margin-right: 5px;
+}
+
+.heart-icon-wrap > span, .report-icon > span, .edit-icon > span, .delete-icon > span {
+	font-size: 15px;
+}
+
+
+.hb-fill {
+	color: red;
+}
+
+
+.date {
+	font-size: 15px;
+	margin-right: 10px;
+}
+
+.review-more-wrap{
+    width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;	
+}
+
+.btnWrap{
+	text-align: center;
+}
+
+.delBtn{
+	width: 90px;
+    height: 30px;
+    background-color: red;
+    border-radius: 20px;
+    color: #fff;
+    border:0px;
+	cursor:pointer;
+}

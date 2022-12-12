@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+.unregister_wrap{
+	display: flex;
+	flex-direction: column;
+	width: 1555px;
+}
+
+.unregister_img{
+	margin: 0px auto;
+	width: 350px;
+	height: 380px;
+}
+.unregister_img img{
+	height: 375px;
+}
+.msg{
+    margin: 0px auto;
+    margin-bottom: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #593000;
+}
+.msg1{
+	margin: 0px auto;
+	font-size: 15px;
+	color: #593000;
+	height: 80px;
+	text-align: center;
+}
+.pw_chk{
+    margin: 0px auto;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    display: flex;
+}
+.pw{ 
+	height: 30px;
+	border: 1px solid #C89E6C;
+	border-radius: 5px;
+	padding-left: 10px;
+}
+.unregister_btn{
+	width: 120px;
+    height: 50px;
+    background-color: #593000;
+    border-radius: 5px;
+    color: white;
+    margin: 0px auto;
+    margin-bottom: 80px;
+    font-size: 17px;
+}
